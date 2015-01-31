@@ -11,9 +11,8 @@ $( document ).ready(function() {
 var wedges=[
 	{label:"Basic", value:20, color:"#DA9E90"},
 	{label:"Plus", value:20, color:"#86C44F"},
-	{label:"Lite", value:20, color:"#909ADA"},
-	{label:"Elite", value:20, color:"#A066CC"},
-	{label:"Delux", value:20, color:"#BDC44F"}
+	{label:"Deluxe", value:30, color:"#909ADA"},
+	{label:"Elite", value:30, color:"#A066CC"},
 ];
 
 var len = wedges.length;
@@ -44,6 +43,9 @@ function submitWedge(x){
 			'value': $('#color_'+x).val(),
 			'placeholder': $('#color_'+x).val()
 		});
+		wedges[x].label = $('#label_'+x).val();
+		wedges[x].value = $('#percent_'+x).val();
+		wedges[x].color = $('#color_'+x).val();
 		drawDonut();
 		$('span').text('You added a new wedge!');
 		addWedge();
@@ -65,8 +67,11 @@ function updateWedge(x){
 		'value': $('#color_'+x).val(),
 		'placeholder': $('#color_'+x).val()
 	});
+	wedges[x].label = $('#label_'+x).val();
+	wedges[x].value = $('#percent_'+x).val();
+	wedges[x].color = $('#color_'+x).val();
 	Donut3D.transition("theDonut", wedges, 130, 100, 20, 0.4);
-	$('span').text('You updated wedge #'+(i+1)+'!');
+	$('span').text('You updated wedge #'+(x+1)+'!');
 }
 
 function removeWedge(x){
